@@ -69,6 +69,27 @@
                 transform: translateY(-10px);
             }
         }
+                .instagram-logo {
+            position: fixed; /* يجعل العنصر ثابتًا عند التمرير */
+            top: 60px; /* المسافة من الأعلى */
+            right: 10px; /* المسافة من اليمين */
+            z-index: 1000; /* لضمان أن العنصر فوق المحتويات الأخرى */
+            width: 40px; /* عرض الشعار */
+            height: 40px; /* ارتفاع الشعار */
+            transition: transform 0.3s ease; /* تأثير عند التحريك */
+        }
+
+        .instagram-logo img {
+            width: 100%; /* تكييف الصورة */
+            height: 100%;
+            border-radius: 50%; /* جعل الصورة دائرية إذا كانت مربعة */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3); /* إضافة ظل خفيف */
+        }
+
+        .instagram-logo:hover {
+            transform: scale(1.1); /* تكبير الشعار عند التمرير عليه */
+        }
+
 
         /* المنتجات */
         .store-container {
@@ -147,6 +168,10 @@
     </div>
     <header>
         <div class="logo" style="display: inline-block;"><img src="images/logo.png" alt="Logo"></div>
+        <a href="https://www.instagram.com/cardify7/" target="_blank" class="instagram-logo">
+            <img src="images/instagram.png" alt="Instagram" />
+        </a>
+        
     </header>
     <!--best seller start-->
 
