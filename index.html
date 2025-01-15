@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exclusive Online Store</title>
+    <title>Cardify Store</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         /* إعدادات عامة */
@@ -89,7 +89,96 @@
         .socialmedia-logo:hover {
             transform: scale(1.1); /* تكبير الشعار عند التمرير عليه */
         }
+        /*اعدادات الجائزة اليومية*/
+         /* تنسيق الصورة الأساسية */
+         .image-container {
+            text-align: center;
+            margin-top: 10px;
+        }
 
+        .image-container img {
+            cursor: pointer;
+            width: 20vh;
+            height: 20vh;
+            border: 3px solid #ddd;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .image-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* تصميم النافذة المنبثقة */
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .overlay.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            z-index: 1000;
+            background: #fff;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+            transition: transform 0.4s ease, opacity 0.4s ease;
+            opacity: 0;
+        }
+
+        .popup.active {
+            display: block;
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        .popup img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+        }
+
+        /* زر الإغلاق */
+        .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 20px;
+            cursor: pointer;
+            background: #ff4b2b;
+            color: #fff;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            text-align: center;
+            line-height: 35px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .close-btn:hover {
+            background: #ff6b4b;
+            transform: scale(1.1);
+        }
 
         /* المنتجات */
         .store-container {
@@ -177,11 +266,23 @@
             <img src="images/tiktok.png" alt="tiktok" />
         </a>
     </header>
-    <!--best seller start-->
+    <!-- بداية الجائزة اليومية-->
+    <div  style="text-align: center;color: red;"><h1>Daily prize</h1></div>
+    <!-- صورة الزر -->
+    <div class="image-container" >
+        <img src="images/the-prize.png" alt="Click to View" id="triggerImage">
+    </div>
 
+    <!-- النافذة المنبثقة -->
+    <div class="overlay" id="overlay"></div>
+    <div class="popup" id="popup">
+        <button class="close-btn" id="closeBtn">&times;</button>
+        <img src="images/todays-question.png" alt="Popup Image">
+    </div>
     
-    <!-- Best seller end-->
+    <!-- نهاية الجائزة اليومية-->
   
+    <!-- بداية المنتجات-->
     <div class="store-container">
         <!-- المنتج 1 -->
         <div class="product-card">
@@ -227,9 +328,32 @@
         </div>
         <!--نهاية المنتجات-->>
     </div>
-
     <footer>
         <p>Online Store © 2025. All Rights Reserved.</p>
     </footer>
+    <!--بداية الجائزة اليومية JAVA-->
+     <script>
+        // جلب العناصر
+        const triggerImage = document.getElementById('triggerImage');
+        const popup = document.getElementById('popup');
+        const overlay = document.getElementById('overlay');
+        const closeBtn = document.getElementById('closeBtn');
+
+        // عرض النافذة المنبثقة
+        triggerImage.addEventListener('click', () => {
+            popup.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        // إخفاء النافذة عند الضغط على زر الإغلاق أو الخلفية
+        closeBtn.addEventListener('click', closePopup);
+        overlay.addEventListener('click', closePopup);
+
+        function closePopup() {
+            popup.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+    </script>
+    <!-- نهاية الجائزة اليوميةJAVA-->
 </body>
 </html>
