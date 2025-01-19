@@ -137,11 +137,13 @@
             transform: translate(-50%, -50%) scale(0.8);
             z-index: 1000;
             background: transparent;
-            padding: 00px;
             border-radius: 15px;
             box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
             transition: transform 0.4s ease, opacity 0.4s ease;
             opacity: 0;
+            width:80%; /* العرض النسبي */
+            max-width: 100%; /* العرض الأقصى */
+            padding: 10px; /* مساحة داخلية تناسب الهواتف */
         }
 
         .popup.active {
@@ -151,9 +153,12 @@
         }
 
         .popup img {
-            max-width: 100vh;
+            max-width: 90%; /* لتحديد العرض الأقصى بالنسبة لحجم الشاشة */
+            max-height: 80%; /* لتحديد الارتفاع الأقصى */
             border-radius: 10px;
+            object-fit: contain; /* لضبط حجم الصورة بدون تشويه */
         }
+
 
         /* زر الإغلاق */
         .close-btn {
